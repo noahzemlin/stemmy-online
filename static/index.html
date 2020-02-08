@@ -31,6 +31,9 @@
     right: 10px;
     width: 25%;
     position: absolute;
+    background: #e1feff;
+    border: 3px solid black;
+    border-radius: 3px;
   }
 
   #stemmy{
@@ -63,10 +66,60 @@
     margin: 5px;
 
     font-size: 20px;
+    font-weight: bold;
     font-family: CustomFont, sans-serif;    
 
     text-align: center;
   }
+
+  #descrip{
+    width: 256px;
+    height: 128px;
+    background-color: #e1feff;
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 5px;
+
+    font-size: 20px;
+    font-family: CustomFont, sans-serif;    
+
+    text-align: center;
+  }
+
+  #leaderTable{
+    width:350px;
+    font-family: CustomFont, sans-serif;
+    font-size: 20px;
+    color: black;
+}
+
+#leaderTitle{
+    text-align:center;
+    font-size: 25px;
+    font-family: CustomFont, sans-serif;
+    color: black;
+}
+
+.sun{
+  width:48px;
+  height:48px;
+  background-image: url(assets/sun.png);
+}
+
+#textBox{
+  width: 400px;
+  height: 200px;
+  background-color: #e1feff;
+  border: 3px solid black;
+  border-radius: 5px;
+  margin: 5px;
+
+  font-size: 20px;
+  font-weight: bold;
+  font-family: CustomFont, sans-serif;    
+
+  text-align: center;
+}
 
 </style>
 
@@ -95,17 +148,29 @@
       <p>Hi! I'm Stemmy!</p>
     </div>
 
+    <div id="descrip">
+      <p>Help Stemmy gain sun energy by winning math games!</p>
+    </div>
+
     <div id="gameMode">
       <p>Quick Math!</p>
     </div>
   </div>
 
   <div id="middle">
-    <p>hi</p>
+    <div id="textBox">hi</div>
   </div>
 
   <div id="rightSide">
-    <p>hi</p>
+    <div id="leaderTitle">Leaderboard</div>
+    <p></p>
+
+    <table id="leaderTable">
+        <tr>
+            <td><div class="sun" style="background-position: 0px -48px;"></div></td>
+            <td>Sarah</td>
+        </tr>
+    </table>
   </div>
 </body>
 
