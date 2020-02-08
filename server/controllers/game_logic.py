@@ -1,6 +1,5 @@
 from random import randint
 
-
 class game_logic:
 
     # define static variables
