@@ -2,7 +2,7 @@ import eventlet
 import socketio
 from controllers.game_logic import game_logic
 
-sio = socketio.Server()
+sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
 
 @sio.event
@@ -10,7 +10,7 @@ def connect(sid, environ):
     print('connect ', sid)
     # create initial set of dice and send to everyone
     dice_list = game_logic.generate_dice(num_dice=3)
-    sio.emit(dice_list)
+    sio.emit('new_dice', dice_list)
 
 @sio.event
 def receive_answer(sid, answer):
@@ -21,7 +21,7 @@ def receive_answer(sid, answer):
         
         # send new dice set out since current one was guessed
         dice_list = game_logic.generate_dice(num_dice=3)
-        sio.emit(dice_list)
+        sio.emit('new_dice', dice_list)
     else:
         sio.emit("incorrect", room=sid)
 
