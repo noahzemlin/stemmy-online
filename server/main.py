@@ -1,11 +1,20 @@
-from flask import Flask
-import random
-app = Flask(__name__)
+import eventlet
+import socketio
 
-@app.route('/')
-def hello_world():
-    return 'Hello, World!'
+sio = socketio.Server()
+app = socketio.WSGIApp(sio)
 
-@app.route('/numbers')
-def numbers():
-    return str(random.randint(1,6))
+@sio.event
+def connect(sid, environ):
+    print('connect ', sid)
+
+@sio.event
+def health(sid, data):
+    print('health ', data)
+
+@sio.event
+def disconnect(sid):
+    print('disconnect ', sid)
+
+if __name__ == '__main__':
+    eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
