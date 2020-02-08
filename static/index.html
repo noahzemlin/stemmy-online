@@ -28,6 +28,7 @@
   }
 
   #rightSide{
+    margin: 5px;
     right: 10px;
     width: 25%;
     position: absolute;
@@ -107,7 +108,7 @@
 }
 
 #textBox{
-  width: 400px;
+  width: 600px;
   height: 200px;
   background-color: #e1feff;
   border: 3px solid black;
@@ -120,6 +121,32 @@
 
   text-align: center;
 }
+
+input[type=text] {
+  width: 80%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#diceBox{
+  width: 600px;
+  height: 300px;
+  background-color: #e1feff;
+  border: 3px solid black;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+#dice{
+    width: 150px;
+    height: 150px;
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 20px;
+    box-shadow: 5px 10px;
+    float: left;
+  }
 
 </style>
 
@@ -158,7 +185,23 @@
   </div>
 
   <div id="middle">
-    <div id="textBox">hi</div>
+    <div id="textBox">
+      <br>
+      <br>
+
+      <label for="fname">Sum up the dice and enter the result:</label>
+      <p></p>
+      <input type="text" id="fname" name="fname">
+    </div>
+
+    <div id="diceBox">
+      <br>
+      <br>
+      <div id="dice"><img src="assets/1yellow.png"></img></div>
+      <div id="dice"><img src="assets/2yellow.png"></img></div>
+      <div id="dice"><img src="assets/3yellow.png"></img></div>
+    </div>
+
   </div>
 
   <div id="rightSide">
@@ -169,6 +212,7 @@
         <tr>
             <td><div class="sun" style="background-position: 0px -48px;"></div></td>
             <td>Sarah</td>
+            <td>Score</td>
         </tr>
     </table>
   </div>
