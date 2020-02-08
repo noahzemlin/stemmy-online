@@ -8,10 +8,105 @@
     background-position: center;
     background-size: 100%;
   }
+
+  #octocat {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+  }
+
+  #leftSide{
+    left: 10px;
+    width: 30%;
+    position: absolute;
+  }
+
+  #middle{
+    right: 30%;
+    width: 40%;
+    position: absolute;
+  }
+
+  #rightSide{
+    right: 10px;
+    width: 25%;
+    position: absolute;
+  }
+
+  #stemmy{
+    width: 256px;
+    height: 256px;
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 5px;
+  }
+
+  #stemmyTalk{
+    width: 256px;
+    height: 64px;
+    background-color: #e1feff;
+    border: 3px solid black;
+    border-radius: 5px;
+    text-align: center;
+    margin: 5px;
+
+    font-size: 20px;
+    font-family: CustomFont, sans-serif;
+  }
+
+  #gameMode{
+    width: 256px;
+    height: 64px;
+    background-color: #e1feff;
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 5px;
+
+    font-size: 20px;
+    font-family: CustomFont, sans-serif;    
+
+    text-align: center;
+  }
+
 </style>
 
-<body>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Help stemmy the flower out">
+  <title>Stemmy The Flower</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/qtip2/3.0.3/basic/jquery.qtip.min.css">
+  <link rel="stylesheet" href="css/main.css" />
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/qtip2/3.0.3/basic/jquery.qtip.min.js"></script>
+  <script src="facts.js"></script>
+  <script src="js/main.js"></script>
+</head>
 
+<body>
+  <div id="octocat">
+    <a href="https://github.com/noahzemlin/hacklahoma20-idea1"><img src="assets/GitHub-Mark-64px.png"></a>
+  </div>
+
+  <div id="leftSide">
+    <div id="stemmy"><img src="assets/stemmyV2.gif"></img></div>
+
+    <div id="stemmyTalk">
+      <p>Hi! I'm Stemmy!</p>
+    </div>
+
+    <div id="gameMode">
+      <p>Quick Math!</p>
+    </div>
+  </div>
+
+  <div id="middle">
+    <p>hi</p>
+  </div>
+
+  <div id="rightSide">
+    <p>hi</p>
+  </div>
 </body>
 
 </html>
