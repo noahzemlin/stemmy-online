@@ -7,9 +7,10 @@ sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
 
 @sio.event
-def connect(sid, environ):
+def connect(sid, environ, name): 
+    # users will be asked their name before being allowed to connect
     print('connect ', sid)
-    scoring.add_player(sid)
+    scoring.add_player(sid, name)
     # don't start game until three players
     if len(scoring.players) >= 3:
         # create initial set of dice and send to everyone
@@ -17,7 +18,6 @@ def connect(sid, environ):
         sio.emit('new_dice', dice_list)
         # put up leaderboard with everyone (with all 0 score)
         sio.emit('leaderboard', scoring.get_leaderboard())
-
 
 @sio.event
 def receive_answer(sid, answer):
@@ -42,6 +42,9 @@ def health(sid, data):
 @sio.event
 def disconnect(sid):
     print('disconnect ', sid)
+    # remove person from the list
+    # important so refreshing does not keep increasing the number of people
+    scoring.remove_player(sid)
 
 if __name__ == '__main__':
     eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
