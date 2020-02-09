@@ -45,3 +45,14 @@ class scoring:
         # update leaderboard. sort by score
         scoring.players = sorted(scoring.players, key = lambda x: x[2], reverse=True)
         return scoring.players
+
+    @staticmethod
+    def reset():
+        # reset all players to 0 and stemmy to -50
+        for n, p in enumerate(scoring.players):
+            # look for stemmy
+            if p[0] == 0:
+                scoring.players[n] = (0, "Stemmy", -50)
+            # look for players
+            if p[0] != 0:
+                scoring.players[n] = (p[0], p[1], 0)
