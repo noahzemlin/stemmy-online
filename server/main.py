@@ -81,6 +81,7 @@ def disconnect(sid):
     # remove person from the list
     # important so refreshing does not keep increasing the number of people
     scoring.remove_player(sid)
+    sio.emit('leaderboard', scoring.get_leaderboard())
 
 if __name__ == '__main__':
     eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
