@@ -15,19 +15,19 @@
     bottom: 10px;
   }
 
-  #leftSide{
+  #leftSide {
     left: 10px;
     width: 30%;
     position: absolute;
   }
 
-  #middle{
+  #middle {
     right: 30%;
     width: 40%;
     position: absolute;
   }
 
-  #rightSide{
+  #rightSide {
     margin: 5px;
     right: 10px;
     width: 25%;
@@ -37,7 +37,7 @@
     border-radius: 3px;
   }
 
-  #stemmy{
+  #stemmy {
     width: 256px;
     height: 256px;
     border: 3px solid black;
@@ -45,7 +45,7 @@
     margin: 5px auto;
   }
 
-  #stemmyTalk{
+  #stemmyTalk {
     width: 256px;
     height: 64px;
     background-color: #e1feff;
@@ -58,7 +58,7 @@
     font-family: CustomFont, sans-serif;
   }
 
-  #button{
+  #button {
     width: 256px;
     height: 64px;
     background-color: #e1feff;
@@ -68,12 +68,12 @@
 
     font-size: 20px;
     font-weight: bold;
-    font-family: CustomFont, sans-serif;    
+    font-family: CustomFont, sans-serif;
 
     text-align: center;
   }
 
-  #descrip{
+  #descrip {
     width: 256px;
     height: 128px;
     background-color: #e1feff;
@@ -82,65 +82,83 @@
     margin: 5px auto;
 
     font-size: 20px;
-    font-family: CustomFont, sans-serif;    
+    font-family: CustomFont, sans-serif;
 
     text-align: center;
   }
 
-  #leaderTable{
-    width:350px;
+  #leaderTable {
+    width: 350px;
     font-family: CustomFont, sans-serif;
     font-size: 20px;
     color: black;
     margin: 5px auto;
-}
+  }
 
-#leaderTitle{
-    text-align:center;
+  #leaderTitle {
+    text-align: center;
     font-size: 25px;
     font-family: CustomFont, sans-serif;
     color: black;
     margin: 5px auto;
-}
+  }
 
-.sun{
-  width:48px;
-  height:48px;
-  background-image: url(assets/sun.png);
-}
+  .first {
+    width: 48px;
+    height: 48px;
+    background-image: url(assets/first.png);
+  }
 
-#textBox{
-  width: 600px;
-  height: 200px;
-  background-color: #e1feff;
-  border: 3px solid black;
-  border-radius: 5px;
-  margin: 5px auto;
+  .second {
+    width: 48px;
+    height: 48px;
+    background-image: url(assets/second.png);
+  }
 
-  font-size: 20px;
-  font-weight: bold;
-  font-family: CustomFont, sans-serif;    
+  .third {
+    width: 48px;
+    height: 48px;
+    background-image: url(assets/third.png);
+  }
 
-  text-align: center;
-}
+  .sun {
+    width: 48px;
+    height: 48px;
+    background-image: url(assets/sun.png);
+  }
 
-input[type=text] {
-  width: 80%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-}
+  #textBox {
+    width: 600px;
+    height: 200px;
+    background-color: #e1feff;
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 5px auto;
 
-#diceBox{
-  width: 600px;
-  height: 300px;
-  background-color: #e1feff;
-  border: 3px solid black;
-  border-radius: 5px;
-  margin: 5px auto;
-}
+    font-size: 20px;
+    font-weight: bold;
+    font-family: CustomFont, sans-serif;
 
-#dice{
+    text-align: center;
+  }
+
+  input[type=text] {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
+  #diceBox {
+    width: 600px;
+    height: 300px;
+    background-color: #e1feff;
+    border: 3px solid black;
+    border-radius: 5px;
+    margin: 5px auto;
+  }
+
+  #dice {
     width: 150px;
     height: 150px;
     border: 3px solid black;
@@ -149,7 +167,6 @@ input[type=text] {
     box-shadow: 5px 10px;
     float: left;
   }
-
 </style>
 
 <head>
@@ -211,11 +228,37 @@ input[type=text] {
     <p></p>
 
     <table id="leaderTable">
-        <tr>
-            <td><div class="sun" style="background-position: 0px -48px;"></div></td>
-            <td>Sarah</td>
-            <td>Score</td>
-        </tr>
+      <tr>
+        <td>
+          <div class="first" style="background-position: 0px -48px;"></div>
+        </td>
+        <td>Sarah</td>
+        <td>Score</td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="second" style="background-position: 0px -48px;"></div>
+        </td>
+        <td>Sarah</td>
+        <td>Score</td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="third" style="background-position: 0px -48px;"></div>
+        </td>
+        <td>Sarah</td>
+        <td>Score</td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="sun" style="background-position: 0px -48px;"></div>
+        </td>
+        <td>Sarah</td>
+        <td>Score</td>
+      </tr>
     </table>
   </div>
 </body>
