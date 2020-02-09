@@ -37,17 +37,19 @@ def start(sid):
 @sio.event
 def receive_answer(sid, ans):
     try:
-        # check for cheat codes
-        if ans == "cheat":
-            # give a lot of points
-            scoring.update_score(sid, points=20)
-        # if not a cheat code, make sure the input is an integer
+        # make sure the input is an integer (already checked in JS)
         answer = int(ans)
     except:
         # ignore a non-numeric answer
         return
-
     print('received_answer ', sid)
+
+    # check for cheat codes
+    if answer == 3141:
+        # give a lot of points
+        scoring.update_score(sid, points=15)
+        print('Cheater! ', sid)
+
     # check if result is correct
     if game_logic.check_result(answer):
         # result is correct, so add to the user's score

@@ -2,18 +2,18 @@
 class scoring:
 
     # list of players. each player object is a tuple containing sid, name, and score
-    players = [(0,"Stemmy",-20)]
+    players = [(0,"Stemmy",-50)]
     # temp list for players who have not yet entered a name
     new_player_ids = []
 
     @staticmethod
     def add_player(sid):
-        # add a new player who just connected
-        #new_player = (sid, "NO_NAME", 0)
+        # add a new player who just connected but doesn't have a name yet
         scoring.new_player_ids.append(str(sid))
 
     @staticmethod
     def assign_name(sid, name):
+        # assign a name to a new player who is connected
         for p in scoring.new_player_ids:
             if p == sid:
                 scoring.players.append((p, name, 0))
