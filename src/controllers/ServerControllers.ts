@@ -1,15 +1,17 @@
 import socketIo from 'socket.io-client';
 import { Observable } from 'rxjs';
 
-const SERVER_URL = 'http://localhost:5000';
+let SERVER_URL = 'http://localhost:5000';
 
 export class SocketService {
     private socket!: SocketIOClient.Socket;
 
     public constructor(name: string) {
+        SERVER_URL = window.location.hostname
         this.socket = socketIo(SERVER_URL)
         
         this.send("assign_name", name);
+        
     }
 
     public kill() {
