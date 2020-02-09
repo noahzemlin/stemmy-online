@@ -40,5 +40,5 @@ class scoring:
     @staticmethod
     def get_leaderboard():
         # update leaderboard. sort by score
-        sorted(scoring.players, key = lambda x: x[2], reverse=True)
+        scoring.players = sorted(scoring.players, key = lambda x: x[2], reverse=True)
         return scoring.players
