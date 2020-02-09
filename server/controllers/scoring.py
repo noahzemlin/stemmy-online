@@ -4,20 +4,20 @@ class scoring:
     # list of players. each player object is a tuple containing sid, name, and score
     players = []
     # temp list for players who have not yet entered a name
-    no_name_players = []
+    new_player_ids = []
 
     @staticmethod
     def add_player(sid):
         # add a new player who just connected
-        new_player = (sid, "NO_NAME", 0)
-        scoring.no_name_players.append(new_player)
+        #new_player = (sid, "NO_NAME", 0)
+        scoring.new_player_ids.append(sid)
 
     @staticmethod
     def assign_name(sid, name):
-        for p in scoring.no_name_players:
+        for p in scoring.new_player_ids:
             if p[0] == sid:
                 scoring.players.append((p[0], name, p[2]))
-                scoring.no_name_players.remove(p)
+                scoring.new_player_ids.remove(p[0])
                 break
 
     @staticmethod
@@ -40,5 +40,5 @@ class scoring:
     @staticmethod
     def get_leaderboard():
         # update leaderboard. sort by score
-        scoring.players = sorted(scoring.players, key = lambda x: x[2])[:-1]
+        sorted(scoring.players, key = lambda x: x[2], reverse=True)
         return scoring.players
