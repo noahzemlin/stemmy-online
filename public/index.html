@@ -55,6 +55,7 @@
       }
     
       #rightSide{
+        margin: 5px;
         right: 10px;
         width: 25%;
         position: absolute;
@@ -68,7 +69,7 @@
         height: 256px;
         border: 3px solid black;
         border-radius: 5px;
-        margin: 5px;
+        margin: 5px auto;
       }
     
       #stemmyTalk{
@@ -78,19 +79,19 @@
         border: 3px solid black;
         border-radius: 5px;
         text-align: center;
-        margin: 5px;
+        margin: 5px auto;
     
         font-size: 20px;
         font-family: CustomFont, sans-serif;
       }
     
-      #gameMode{
+      #button{
         width: 256px;
         height: 64px;
         background-color: #e1feff;
         border: 3px solid black;
         border-radius: 5px;
-        margin: 5px;
+        margin: 5px auto;
     
         font-size: 20px;
         font-weight: bold;
@@ -105,7 +106,7 @@
         background-color: #e1feff;
         border: 3px solid black;
         border-radius: 5px;
-        margin: 5px;
+        margin: 5px auto;
     
         font-size: 20px;
         font-family: CustomFont, sans-serif;    
@@ -118,6 +119,7 @@
         font-family: CustomFont, sans-serif;
         font-size: 20px;
         color: black;
+        margin: 5px auto;
     }
     
     #leaderTitle{
@@ -125,6 +127,7 @@
         font-size: 25px;
         font-family: CustomFont, sans-serif;
         color: black;
+        margin: 5px auto;
     }
     
     .sun{
@@ -134,12 +137,12 @@
     }
     
     #textBox{
-      width: 400px;
+      width: 600px;
       height: 200px;
       background-color: #e1feff;
       border: 3px solid black;
       border-radius: 5px;
-      margin: 5px;
+      margin: 5px auto;
     
       font-size: 20px;
       font-weight: bold;
@@ -148,6 +151,31 @@
       text-align: center;
     }
     
+    input[type=text] {
+      width: 80%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+    
+    #diceBox{
+      width: 600px;
+      height: 300px;
+      background-color: #e1feff;
+      border: 3px solid black;
+      border-radius: 5px;
+      margin: 5px auto;
+    }
+    
+    #dice{
+        width: 150px;
+        height: 150px;
+        border: 3px solid black;
+        border-radius: 5px;
+        margin: 20px;
+        box-shadow: 5px 10px;
+        float: left;
+      }
     </style>
   </head>
   <body>
@@ -166,20 +194,25 @@
         <p>Help Stemmy gain sun energy by winning math games!</p>
       </div>
   
-      <div id="gameMode">
-        <p>Quick Math!</p>
+      <div id="button">
+        <p>Start!</p>
       </div>
     </div>
   
     <div id="middle">
-      <div id="textBox">hi</div>
+      <div id="textBoxFiller">
+      </div>
+  
+      <div id="diceBoxFiller">
+      </div>
+  
     </div>
   
     <div id="rightSide">
       <div id="leaderTitle">Leaderboard</div>
       <p></p>
   
-      <div id="leaderTable">
+      <div id="leaderTableFiller">
       </div>
     </div>
   </body>

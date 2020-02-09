@@ -34,7 +34,9 @@ export default class Leaderboard extends React.Component<IProps, IState> {
 
     return (
         <table id="leaderTable">
+          <tbody>
             {leaderboardJsx}
+          </tbody>
         </table>
     );
   }
