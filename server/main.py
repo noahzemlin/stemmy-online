@@ -30,7 +30,7 @@ def join_room(sid, nameAndRoom):
         scoring.join_room(sid, name, room)
         # put up leaderboard so everyone can see if they are in before starting
         sio.enter_room(sid, room)
-        sio.emit('joined_room', room)
+        sio.emit('joined_room', room, room=sid)
         sio.emit('leaderboard', scoring.get_leaderboard(room), room=room)
 
 @sio.event
