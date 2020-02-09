@@ -29,12 +29,12 @@ class scoring:
                 break
 
     @staticmethod
-    def update_score(sid):
+    def update_score(sid, points):
         for n, p in enumerate(scoring.players):
             if p[0] == sid:
                 # add one point for the correct answer
                 # replace tuple for player with new one with new score
-                scoring.players[n] = (p[0], p[1], p[2] + 1)
+                scoring.players[n] = (p[0], p[1], p[2] + points)
                 break
     
     @staticmethod

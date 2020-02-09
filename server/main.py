@@ -37,6 +37,11 @@ def start(sid):
 @sio.event
 def receive_answer(sid, ans):
     try:
+        # check cheat codes
+        if answer == "cheat":
+            # give a lot of points
+            scoring.update_score(sid, points=20)
+        # if not a cheat code, make sure the input is an integer
         answer = int(ans)
     except:
         # ignore a non-numeric answer
@@ -46,7 +51,7 @@ def receive_answer(sid, ans):
     # check if result is correct
     if game_logic.check_result(answer):
         # result is correct, so add to the user's score
-        scoring.update_score(sid)
+        scoring.update_score(sid, points=1)
         # send new dice set out since current one was guessed
         dice_list = game_logic.generate_dice(num_dice=3)
         sio.emit('new_dice', dice_list)
