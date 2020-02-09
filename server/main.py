@@ -49,6 +49,9 @@ def receive_answer(sid, ans):
         # give a lot of points
         scoring.update_score(sid, points=15)
         print('Cheater! ', sid)
+        # update leaderboard
+        sio.emit('leaderboard', scoring.get_leaderboard())
+
 
     # check if result is correct
     if game_logic.check_result(answer):

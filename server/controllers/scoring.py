@@ -36,10 +36,9 @@ class scoring:
                 scoring.players[n] = (0, "Stemmy", p[2] + points)
             # give player points
             if p[0] == sid:
-                # add one point for the correct answer
+                # add points for the correct answer
                 # replace tuple for player with new one with new score
                 scoring.players[n] = (p[0], p[1], p[2] + points)
-                break
     
     @staticmethod
     def get_leaderboard():
