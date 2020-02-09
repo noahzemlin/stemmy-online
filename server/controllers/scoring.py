@@ -2,7 +2,7 @@
 class scoring:
 
     # list of players. each player object is a tuple containing sid, name, and score
-    players = []
+    players = [(0,"Stemmy",-20)]
     # temp list for players who have not yet entered a name
     new_player_ids = []
 
@@ -31,6 +31,10 @@ class scoring:
     @staticmethod
     def update_score(sid, points):
         for n, p in enumerate(scoring.players):
+            # give stemmy points
+            if p[0] == 0:
+                scoring.players[n] = (0, "Stemmy", p[2] + points)
+            # give player points
             if p[0] == sid:
                 # add one point for the correct answer
                 # replace tuple for player with new one with new score
