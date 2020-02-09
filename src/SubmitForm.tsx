@@ -38,8 +38,8 @@ export default class SubmitForm extends React.Component<IProps, IState> {
     
             <label>Sum up the dice and enter the result:</label>
             <p></p>
-            <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-                <input type="text" value={this.state.value}/>
+            <form onSubmit={this.handleSubmit}>
+                <input type="text" value={this.state.value} onChange={this.handleChange}/>
             </form>
         </div>
     );

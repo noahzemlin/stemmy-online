@@ -24,6 +24,12 @@ export default class Stemmy extends React.Component<IProps, IState> {
                 }
             });
 
+            if (health < -25) {
+                this.setState({
+                    stemmyPic: "assets/sad.png"
+                });
+            }
+
             if (health >= -25 && health < 0) {
                 this.setState({
                     stemmyPic: "assets/neutral.png"
