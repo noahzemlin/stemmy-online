@@ -37,8 +37,8 @@ def start(sid):
 @sio.event
 def receive_answer(sid, ans):
     try:
-        # check cheat codes
-        if answer == "cheat":
+        # check for cheat codes
+        if ans == "cheat":
             # give a lot of points
             scoring.update_score(sid, points=20)
         # if not a cheat code, make sure the input is an integer
