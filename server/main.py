@@ -43,7 +43,7 @@ def start(sid):
     if len(scoring.rooms[room]) >= min_players: 
         # create initial set of dice and send to everyone
         dice_list = game_logic.generate_dice(num_dice=3)
-        sio.emit('new_dice', dice_list)
+        sio.emit('new_dice', dice_list, room=room)
         # put up leaderboard with everyone (with all 0 score)
         sio.emit('leaderboard', scoring.get_leaderboard(room), room=room)
 
@@ -80,8 +80,8 @@ def receive_answer(sid, ans):
     
     # generate new dice and update leaderboard
     dice_list = game_logic.generate_dice(num_dice=3)
-    sio.emit('new_dice', dice_list)
-    sio.emit('leaderboard', scoring.get_leaderboard(room))
+    sio.emit('new_dice', dice_list, room=room)
+    sio.emit('leaderboard', scoring.get_leaderboard(room), room=room)
     return
 
 @sio.event
@@ -102,7 +102,7 @@ def disconnect(sid):
 
         # if the room still exists, update everyone
         if room in scoring.rooms:
-            sio.emit('leaderboard', scoring.get_leaderboard(room))
+            sio.emit('leaderboard', scoring.get_leaderboard(room), room=room)
 
 if __name__ == '__main__':
     eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
