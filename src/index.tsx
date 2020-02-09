@@ -6,17 +6,15 @@ import Leaderboard from './Leaderboard';
 import StemServer from './controllers/ServerControllers';
 import SubmitForm from './SubmitForm';
 import DiceTray from './DiceTray';
-import StartButton from './modules/StartButton';
 import Stemmy from './Stemmy';
+import JoinArea from './modules/JoinArea';
 
-const name: string = prompt("name") || "No Name";
-
-StemServer.init(name);
+StemServer.init();
 
 ReactDOM.render(<SubmitForm />, document.getElementById('textBoxFiller'));
 ReactDOM.render(<DiceTray />, document.getElementById('diceBoxFiller'));
 ReactDOM.render(<Leaderboard />, document.getElementById('leaderTableFiller'));
-ReactDOM.render(<StartButton />, document.getElementById('button'));
+ReactDOM.render(<JoinArea />, document.getElementById('button'));
 ReactDOM.render(<Stemmy />, document.getElementById('stemmy'));
 
 // If you want your app to work offline and load faster, you can change

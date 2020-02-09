@@ -6,12 +6,9 @@ let SERVER_URL = 'http://localhost:5000';
 export class SocketService {
     private socket!: SocketIOClient.Socket;
 
-    public constructor(name: string) {
+    public constructor() {
         SERVER_URL = window.location.hostname + ":5000";
         this.socket = socketIo(SERVER_URL);
-        
-        this.send("assign_name", name);
-        
     }
 
     public kill() {
@@ -36,8 +33,8 @@ export class SocketService {
 export default class StemServer {
     private static socketService: SocketService;
 
-    public static init(name: string): void {
-        StemServer.socketService = new SocketService(name);
+    public static init(): void {
+        StemServer.socketService = new SocketService();
     }
 
     public static get(): SocketService {

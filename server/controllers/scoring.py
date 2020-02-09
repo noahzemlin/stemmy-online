@@ -1,58 +1,75 @@
 
 class scoring:
 
-    # list of players. each player object is a tuple containing sid, name, and score
-    players = [(0,"Stemmy",-50)]
-    # temp list for players who have not yet entered a name
-    new_player_ids = []
+    # list of rooms with lists of players. each player object is a tuple containing sid, name, and score
+    # replace all scoring.players with scoring.rooms[<room>]
+    rooms = {}
+
+    playerRoom = {}
 
     @staticmethod
-    def add_player(sid):
-        # add a new player who just connected but doesn't have a name yet
-        scoring.new_player_ids.append(str(sid))
+    def join_room(sid, name, room):
 
-    @staticmethod
-    def assign_name(sid, name):
-        # assign a name to a new player who is connected
-        for p in scoring.new_player_ids:
-            if p == sid:
-                scoring.players.append((p, name, 0))
-                scoring.new_player_ids.remove(p)
-                break
+        # player is already in a room, but we shouldn't see this happen
+        if sid in scoring.playerRoom:
+            return
+
+        # if the room doesn't exist, make it
+        if not room in scoring.rooms:
+            scoring.rooms[room] = [(0,"Stemmy",-50)]
+
+        # join the player into a room
+        scoring.rooms[room].append((sid, name, 0))
+        scoring.playerRoom[sid] = room
+
+        print(scoring.rooms)
+        print(scoring.playerRoom)
 
     @staticmethod
     def remove_player(sid):
+        room = scoring.playerRoom[sid]
+
+        del scoring.playerRoom[sid]
+
         # remove a player from the list when they disconnect
-        for p in scoring.players:
+        for p in scoring.rooms[room]:
             if p[0] == sid:
-                scoring.players.remove(p)
+                scoring.rooms[room].remove(p)
                 break
+
+        # if no one left in the room (besides stemmy), delete it
+        if len(scoring.rooms[room]) == 1:
+            del scoring.rooms[room]
 
     @staticmethod
     def update_score(sid, points):
-        for n, p in enumerate(scoring.players):
+        room = scoring.playerRoom[sid]
+
+        for n, p in enumerate(scoring.rooms[room]):
             # give stemmy points
             if p[0] == 0:
-                scoring.players[n] = (0, "Stemmy", p[2] + points)
+                scoring.rooms[room][n] = (0, "Stemmy", p[2] + points)
             # give player points
             if p[0] == sid:
                 # add points for the correct answer
                 # replace tuple for player with new one with new score
-                scoring.players[n] = (p[0], p[1], p[2] + points)
+                scoring.rooms[room][n] = (p[0], p[1], p[2] + points)
     
     @staticmethod
-    def get_leaderboard():
+    def get_leaderboard(room):
         # update leaderboard. sort by score
-        scoring.players = sorted(scoring.players, key = lambda x: x[2], reverse=True)
-        return scoring.players
+        scoring.rooms[room] = sorted(scoring.rooms[room], key = lambda x: x[2], reverse=True)
+        return scoring.rooms[room]
 
     @staticmethod
     def reset():
-        # reset all players to 0 and stemmy to -50
-        for n, p in enumerate(scoring.players):
-            # look for stemmy
-            if p[0] == 0:
-                scoring.players[n] = (0, "Stemmy", -50)
-            # look for players
-            if p[0] != 0:
-                scoring.players[n] = (p[0], p[1], 0)
+        # # reset all players to 0 and stemmy to -50
+        # for n, p in enumerate(scoring.players):
+        #     # look for stemmy
+        #     if p[0] == 0:
+        #         scoring.players[n] = (0, "Stemmy", -50)
+        #     # look for players
+        #     if p[0] != 0:
+        #         scoring.players[n] = (p[0], p[1], 0)
+        scoring.rooms = {}
+        scoring.playerRoom = {}

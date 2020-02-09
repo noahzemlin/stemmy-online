@@ -12,27 +12,40 @@ def connect(sid, environ):
     # users will be asked their name before being allowed to connect
     #query = environ["QUERY_STRING"]
     #name = query[query.find("name=")+5:query.find("&")]
-    scoring.add_player(sid)
+    #scoring.add_player(sid)
 
 @sio.event
-def assign_name(sid, name):
-    print('received_name ', sid)
-    # assign name to player
-    scoring.assign_name(sid, name)
-    # put up leaderboard so everyone can see if they are in before starting
-    sio.emit('leaderboard', scoring.get_leaderboard())
+def join_room(sid, nameAndRoom):
+    name = nameAndRoom[0]
+    room = nameAndRoom[1]
+
+    # make sure name and room are gucci
+    if str.isalnum(name) and str.isalnum(room) and 2 < len(name) < 12 and 2 < len(room) < 12:
+        
+        # lowercase room to make it easy to type
+        room = str.lower(room)
+
+        print('received_name ', sid)
+        # assign name to player
+        scoring.join_room(sid, name, room)
+        # put up leaderboard so everyone can see if they are in before starting
+        sio.enter_room(sid, room)
+        sio.emit('joined_room', room)
+        sio.emit('leaderboard', scoring.get_leaderboard(room), room=room)
 
 @sio.event
 def start(sid):
+    room = scoring.playerRoom[sid]
+
     print('starting')
     # don't allow start game until certain number of players
     min_players = 1
-    if len(scoring.players) >= min_players: 
+    if len(scoring.rooms[room]) >= min_players: 
         # create initial set of dice and send to everyone
         dice_list = game_logic.generate_dice(num_dice=3)
         sio.emit('new_dice', dice_list)
         # put up leaderboard with everyone (with all 0 score)
-        sio.emit('leaderboard', scoring.get_leaderboard())
+        sio.emit('leaderboard', scoring.get_leaderboard(room), room=room)
 
 @sio.event
 def receive_answer(sid, ans):
@@ -62,11 +75,13 @@ def receive_answer(sid, ans):
         sio.emit("incorrect", room=sid)
         # return instead of generating new dice
         return
+
+    room = scoring.playerRoom[sid]
     
     # generate new dice and update leaderboard
     dice_list = game_logic.generate_dice(num_dice=3)
     sio.emit('new_dice', dice_list)
-    sio.emit('leaderboard', scoring.get_leaderboard())
+    sio.emit('leaderboard', scoring.get_leaderboard(room))
     return
 
 @sio.event
@@ -80,8 +95,14 @@ def disconnect(sid):
     print('disconnect ', sid)
     # remove person from the list
     # important so refreshing does not keep increasing the number of people
-    scoring.remove_player(sid)
-    sio.emit('leaderboard', scoring.get_leaderboard())
+    if sid in scoring.playerRoom:
+        room = scoring.playerRoom[sid]
+        sio.leave_room(sid, room)
+        scoring.remove_player(sid)
+
+        # if the room still exists, update everyone
+        if room in scoring.rooms:
+            sio.emit('leaderboard', scoring.get_leaderboard(room))
 
 if __name__ == '__main__':
     eventlet.wsgi.server(eventlet.listen(('', 5000)), app)
