@@ -49,21 +49,25 @@ def receive_answer(sid, ans):
         # give a lot of points
         scoring.update_score(sid, points=15)
         print('Cheater! ', sid)
-        # update leaderboard
-        sio.emit('leaderboard', scoring.get_leaderboard())
-
-
+    # check for reset code
+    elif answer == 6282:
+        # reset
+        scoring.reset()
     # check if result is correct
-    if game_logic.check_result(answer):
+    elif game_logic.check_result(answer):
         # result is correct, so add to the user's score
         scoring.update_score(sid, points=1)
-        # send new dice set out since current one was guessed
-        dice_list = game_logic.generate_dice(num_dice=3)
-        sio.emit('new_dice', dice_list)
-        # update leaderboard
-        sio.emit('leaderboard', scoring.get_leaderboard())
+    # result is incorrect
     else:
         sio.emit("incorrect", room=sid)
+        # return instead of generating new dice
+        return
+    
+    # generate new dice and update leaderboard
+    dice_list = game_logic.generate_dice(num_dice=3)
+    sio.emit('new_dice', dice_list)
+    sio.emit('leaderboard', scoring.get_leaderboard())
+    return
 
 @sio.event
 def health(sid, data):
