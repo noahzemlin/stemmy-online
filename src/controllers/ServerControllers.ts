@@ -7,7 +7,7 @@ export class SocketService {
     private socket!: SocketIOClient.Socket;
 
     public constructor(name: string) {
-        SERVER_URL = window.location.hostname
+        SERVER_URL = window.location.hostname + ":5000"
         this.socket = socketIo(SERVER_URL)
         
         this.send("assign_name", name);
