@@ -27,6 +27,7 @@ export default class SubmitForm extends React.Component<IProps, IState> {
   handleSubmit(e: any) {
     e.preventDefault();
     StemServer.get().send('receive_answer', parseInt(this.state.value));
+    this.setState({value:""});
   }
 
   render() {
@@ -38,7 +39,7 @@ export default class SubmitForm extends React.Component<IProps, IState> {
             <label>Sum up the dice and enter the result:</label>
             <p></p>
             <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
-                <input type="text"/>
+                <input type="text" value={this.state.value}/>
             </form>
         </div>
     );

@@ -10,14 +10,14 @@ class scoring:
     def add_player(sid):
         # add a new player who just connected
         #new_player = (sid, "NO_NAME", 0)
-        scoring.new_player_ids.append(sid)
+        scoring.new_player_ids.append(str(sid))
 
     @staticmethod
     def assign_name(sid, name):
         for p in scoring.new_player_ids:
-            if p[0] == sid:
-                scoring.players.append((p[0], name, p[2]))
-                scoring.new_player_ids.remove(p[0])
+            if p == sid:
+                scoring.players.append((p, name, 0))
+                scoring.new_player_ids.remove(p)
                 break
 
     @staticmethod
