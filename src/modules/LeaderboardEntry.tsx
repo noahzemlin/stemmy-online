@@ -23,6 +23,9 @@ export default class LeaderboardEntry extends React.Component<IProps, IState> {
       case 2: position = "second"; break;
       case 3: position = "third"; break;
     }
+    if ("" + this.props.sid === "0") {
+      position = "smol";
+    }
     return (
         <tr>
             <td><div className={position} style={style}></div></td>
