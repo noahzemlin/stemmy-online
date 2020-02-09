@@ -24,20 +24,163 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Stemmy The Flower</title>
+    <meta name="description" content="Help stemmy the flower out">
+    <style>
+      body {
+        background-image: url(assets/hill3.png);
+        background-color: #97f9ff;
+        background-attachment: fixed;
+        background-position: center;
+        background-size: 100%;
+      }
+    
+      #octocat {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+      }
+    
+      #leftSide{
+        left: 10px;
+        width: 30%;
+        position: absolute;
+      }
+    
+      #middle{
+        right: 30%;
+        width: 40%;
+        position: absolute;
+      }
+    
+      #rightSide{
+        right: 10px;
+        width: 25%;
+        position: absolute;
+        background: #e1feff;
+        border: 3px solid black;
+        border-radius: 3px;
+      }
+    
+      #stemmy{
+        width: 256px;
+        height: 256px;
+        border: 3px solid black;
+        border-radius: 5px;
+        margin: 5px;
+      }
+    
+      #stemmyTalk{
+        width: 256px;
+        height: 64px;
+        background-color: #e1feff;
+        border: 3px solid black;
+        border-radius: 5px;
+        text-align: center;
+        margin: 5px;
+    
+        font-size: 20px;
+        font-family: CustomFont, sans-serif;
+      }
+    
+      #gameMode{
+        width: 256px;
+        height: 64px;
+        background-color: #e1feff;
+        border: 3px solid black;
+        border-radius: 5px;
+        margin: 5px;
+    
+        font-size: 20px;
+        font-weight: bold;
+        font-family: CustomFont, sans-serif;    
+    
+        text-align: center;
+      }
+    
+      #descrip{
+        width: 256px;
+        height: 128px;
+        background-color: #e1feff;
+        border: 3px solid black;
+        border-radius: 5px;
+        margin: 5px;
+    
+        font-size: 20px;
+        font-family: CustomFont, sans-serif;    
+    
+        text-align: center;
+      }
+    
+      #leaderTable{
+        width:350px;
+        font-family: CustomFont, sans-serif;
+        font-size: 20px;
+        color: black;
+    }
+    
+    #leaderTitle{
+        text-align:center;
+        font-size: 25px;
+        font-family: CustomFont, sans-serif;
+        color: black;
+    }
+    
+    .sun{
+      width:48px;
+      height:48px;
+      background-image: url(assets/sun.png);
+    }
+    
+    #textBox{
+      width: 400px;
+      height: 200px;
+      background-color: #e1feff;
+      border: 3px solid black;
+      border-radius: 5px;
+      margin: 5px;
+    
+      font-size: 20px;
+      font-weight: bold;
+      font-family: CustomFont, sans-serif;    
+    
+      text-align: center;
+    }
+    
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="octocat">
+      <a href="https://github.com/noahzemlin/hacklahoma20-idea1"><img src="assets/GitHub-Mark-64px.png"></a>
+    </div>
+  
+    <div id="leftSide">
+      <div id="stemmy"><img src="assets/stemmyV2.gif"></img></div>
+  
+      <div id="stemmyTalk">
+        <p>Hi! I'm Stemmy!</p>
+      </div>
+  
+      <div id="descrip">
+        <p>Help Stemmy gain sun energy by winning math games!</p>
+      </div>
+  
+      <div id="gameMode">
+        <p>Quick Math!</p>
+      </div>
+    </div>
+  
+    <div id="middle">
+      <div id="textBox">hi</div>
+    </div>
+  
+    <div id="rightSide">
+      <div id="leaderTitle">Leaderboard</div>
+      <p></p>
+  
+      <div id="leaderTable">
+      </div>
+    </div>
   </body>
 </html>

@@ -6,22 +6,11 @@ const SERVER_URL = 'http://localhost:5000';
 export class SocketService {
     private socket!: SocketIOClient.Socket;
 
-    public android_pos: number = -1;
-    public cyborg_pos: number = -1;
-
-    private role: string = "";
-    private _loaded: boolean = false;
-
-    public constructor() {
-        this.socket = socketIo(SERVER_URL);
-    }
-
-    public getRole(): string {
-        return this.role;
-    }
-
-    public loaded(): boolean {
-        return this._loaded;
+    public constructor(name: string) {
+        let opts: SocketIOClient.ConnectOpts = {
+            query: {name: name}
+        };
+        this.socket = socketIo(SERVER_URL, opts);
     }
 
     public kill() {
@@ -40,7 +29,11 @@ export class SocketService {
 }
 
 export default class StemServer {
-    private static socketService: SocketService = new SocketService();
+    private static socketService: SocketService;
+
+    public static init(name: string): void {
+        StemServer.socketService = new SocketService(name);
+    }
 
     public static get(): SocketService {
         return StemServer.socketService

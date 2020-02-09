@@ -7,9 +7,11 @@ sio = socketio.Server(cors_allowed_origins='*')
 app = socketio.WSGIApp(sio)
 
 @sio.event
-def connect(sid, environ, name): 
+def connect(sid, environ): 
     # users will be asked their name before being allowed to connect
     print('connect ', sid)
+    query = environ["QUERY_STRING"]
+    name = query[query.find("name=")+5:query.find("&")]
     scoring.add_player(sid, name)
     # don't start game until three players
     if len(scoring.players) >= 3:
