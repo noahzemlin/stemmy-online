@@ -27,8 +27,6 @@ class scoring:
             if p[0] == sid:
                 scoring.players.remove(p)
                 break
-        # update leaderboard. sort by score
-        scoring.players = sorted(scoring.players, key = lambda x: x[2])[:-1]
 
     @staticmethod
     def update_score(sid):
@@ -38,9 +36,9 @@ class scoring:
                 # replace tuple for player with new one with new score
                 scoring.players[n] = (p[0], p[1], p[2] + 1)
                 break
-        # update leaderboard. sort by score
-        scoring.players = sorted(scoring.players, key = lambda x: x[2])[:-1]
     
     @staticmethod
     def get_leaderboard():
+        # update leaderboard. sort by score
+        scoring.players = sorted(scoring.players, key = lambda x: x[2])[:-1]
         return scoring.players

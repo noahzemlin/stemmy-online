@@ -19,6 +19,8 @@ def assign_name(sid, name):
     print('received_name ', sid)
     # assign name to player
     scoring.assign_name(sid, name)
+    # put up leaderboard so everyone can see if they are in before starting
+    sio.emit('leaderboard', scoring.get_leaderboard())
 
 @sio.event
 def start(sid):
