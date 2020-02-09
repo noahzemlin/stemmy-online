@@ -7,14 +7,17 @@ export class SocketService {
     private socket!: SocketIOClient.Socket;
 
     public constructor(name: string) {
-        let opts: SocketIOClient.ConnectOpts = {
-            query: {name: name}
-        };
-        this.socket = socketIo(SERVER_URL, opts);
+        this.socket = socketIo(SERVER_URL)
+        
+        this.send("assign_name", name);
     }
 
     public kill() {
         this.socket.disconnect();
+    }
+
+    public sendWithoutMessage(type: string): void {
+        this.socket.emit(type);
     }
 
     public send(type: string, message: any): void {

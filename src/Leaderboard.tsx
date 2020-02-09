@@ -28,8 +28,8 @@ export default class Leaderboard extends React.Component<IProps, IState> {
 
     const leaderboardJsx: any[] = [];
 
-    this.state.users.forEach(element => {
-        leaderboardJsx.push(<LeaderboardEntry key={element[0]} sid={element[0]} name={element[1]} score={element[2]}></LeaderboardEntry>);
+    this.state.users.forEach((element, index) => {
+        leaderboardJsx.push(<LeaderboardEntry key={element[0]} sid={element[0]} name={element[1]} score={element[2]} place={index + 1}></LeaderboardEntry>);
     });
 
     return (
