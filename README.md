@@ -1,3 +1,9 @@
+### This was a hack made for [MLH Hacklahoma 2020](https://devpost.com/software/stemmy)
+
+# stemmy-online
+Help Stemmy the flower by adding together randomized dice in a web-hosted math minigame!
+
+# Installation
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
